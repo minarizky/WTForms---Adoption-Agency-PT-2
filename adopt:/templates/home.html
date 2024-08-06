@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Available Pets</h2>
+  <ul>
+    {% for pet in pets %}
+      <li>
+        <a href="{{ url_for('edit_pet', pet_id=pet.id) }}">{{ pet.name }}</a>
+        {% if pet.photo_url %}
+          <img src="{{ pet.photo_url }}" alt="{{ pet.name }}" style="width:100px;height:100px;">
+        {% endif %}
+        {% if pet.available %}
+          <strong>Available</strong>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
